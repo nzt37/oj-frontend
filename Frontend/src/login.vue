@@ -3,18 +3,26 @@
     <el-form :model="form" @keyup.native.enter="loginClick">
       <el-row :gutter="10">
         <el-col :span="3">
-          <div style="text-align:center;margin:5px;">User</div>
+          <div style="text-align: center; margin: 5px">User</div>
         </el-col>
         <el-col :span="12">
-          <el-input v-model="form.username" autocomplete="off" :autofocus="true"></el-input>
+          <el-input
+            v-model="form.username"
+            autocomplete="off"
+            :autofocus="true"
+          ></el-input>
         </el-col>
       </el-row>
       <el-row :gutter="10">
         <el-col :span="3">
-          <div style="text-align:center;margin:5px;">Password</div>
+          <div style="text-align: center; margin: 5px">Password</div>
         </el-col>
         <el-col :span="12">
-          <el-input type="password" v-model="form.password" autocomplete="off"></el-input>
+          <el-input
+            type="password"
+            v-model="form.password"
+            autocomplete="off"
+          ></el-input>
         </el-col>
       </el-row>
     </el-form>
@@ -33,8 +41,8 @@ export default {
       dialogLoginVisible: false,
       form: {
         username: "",
-        password: ""
-      }
+        password: "",
+      },
     };
   },
   methods: {
@@ -46,46 +54,44 @@ export default {
       this.$axios
         .post("/login/", {
           username: this.form.username,
-          password: pas
+          password: pas,
         })
-        .then(response => {
+        .then((response) => {
           if (response.data == "passworderror") {
             this.$message.error("密码错误");
             return;
           }
           this.$message({
             message: "登录成功！",
-            type: "success"
+            type: "success",
           });
 
           sessionStorage.setItem("username", this.form.username);
           sessionStorage.setItem("name", response.data.name);
           sessionStorage.setItem("type", response.data.type);
 
-
-
           this.dialogLoginVisible = false;
-          if(this.$store.state.loginip==""){
-            this.$store.state.loginip = "chrome" // 后台会处理
+          if (this.$store.state.loginip == "") {
+            this.$store.state.loginip = "chrome"; // 后台会处理
           }
 
-          if(this.$store.state.loginip==""){
-            this.$store.state.loginip = "chrome" // 后台会处理
+          if (this.$store.state.loginip == "") {
+            this.$store.state.loginip = "chrome"; // 后台会处理
           }
-          if(this.$store.state.loginip==undefined){
-            this.$store.state.loginip = "chrome" // 后台会处理
+          if (this.$store.state.loginip == undefined) {
+            this.$store.state.loginip = "chrome"; // 后台会处理
           }
 
           this.$axios
             .post("/setlogindata/", {
               username: this.form.username,
               ip: this.$store.state.loginip,
-              msg: this.$store.state.logininfo
+              msg: this.$store.state.logininfo,
             })
-            .then(response => {
+            .then((response) => {
               this.$router.go(0);
             })
-            .catch(error => {
+            .catch((error) => {
               this.$message.error(
                 "服务器错误！" + "(" + JSON.stringify(error.response.data) + ")"
               );
@@ -96,11 +102,11 @@ export default {
               sessionStorage.setItem("acpro", "");
             });
         })
-        .catch(error => {
+        .catch((error) => {
           this.$message.error("用户名不存在（" + error + "）");
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

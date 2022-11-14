@@ -1,11 +1,11 @@
 {
   "name": "frontend",
   "version": "3.4.0",
-  "description": "LPOJ",
-  "author": "LP_Cong <504603913@qq.com>",
+  "description": "CDUOJ",
+  "author": "yzang <40187181@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --hot --config build/webpack.dev.conf.js",
+    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --inline --progress --hot --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
     "analyz": "set NODE_ENV=production && set npm_config_report=true && npm run build"

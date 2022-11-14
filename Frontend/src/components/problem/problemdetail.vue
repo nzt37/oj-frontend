@@ -3,79 +3,104 @@
     <el-col :span="18">
       <el-row>
         <el-card shadow="always">
-          <el-row :gutter="18"
-                  id="title">{{(this.oj=="LPOJ"?"LPOJ":"")+(this.oj=="LPOJ"?" - ":"")+(this.oj=="LPOJ"?this.proid:"")+' '}}{{title}}</el-row>
-          <br>
-          <el-row :gutter="18"
-                  id="des">Description</el-row>
-          <el-row :gutter="18"
-                  id="detail">
-            <div style="margin-right:50px;word-break:break-all;white-space:pre-line;"
-                 v-html="des"
-                 :key="des"></div>
+          <el-row :gutter="18" id="title"
+            >{{
+              (this.oj == "CDUOJ" ? "CDUOJ" : "") +
+              (this.oj == "CDUOJ" ? " - " : "") +
+              (this.oj == "CDUOJ" ? this.proid : "") +
+              " "
+            }}{{ title }}</el-row
+          >
+          <br />
+          <el-row :gutter="18" id="des">Description</el-row>
+          <el-row :gutter="18" id="detail">
+            <div
+              style="
+                margin-right: 50px;
+                word-break: break-all;
+                white-space: pre-line;
+              "
+              v-html="des"
+              :key="des"
+            ></div>
           </el-row>
 
-          <img :src="'data:image/jpeg;base64,'+imgcode"
-               class="img-responsive" v-if="imgcode!=''">
+          <img
+            :src="'data:image/jpeg;base64,' + imgcode"
+            class="img-responsive"
+            v-if="imgcode != ''"
+          />
 
-          <el-row :gutter="18"
-                  id="des">Input</el-row>
-          <el-row :gutter="18"
-                  id="detail">
-            <div style="margin-right:50px;word-break:break-all;white-space:pre-line;"
-                 v-html="input"></div>
+          <el-row :gutter="18" id="des">Input</el-row>
+          <el-row :gutter="18" id="detail">
+            <div
+              style="
+                margin-right: 50px;
+                word-break: break-all;
+                white-space: pre-line;
+              "
+              v-html="input"
+            ></div>
           </el-row>
-          <el-row :gutter="18"
-                  id="des">Output</el-row>
-          <el-row :gutter="18"
-                  id="detail">
-            <div style="margin-right:50px;word-break:break-all;white-space:pre-line;"
-                 v-html="output"></div>
+          <el-row :gutter="18" id="des">Output</el-row>
+          <el-row :gutter="18" id="detail">
+            <div
+              style="
+                margin-right: 50px;
+                word-break: break-all;
+                white-space: pre-line;
+              "
+              v-html="output"
+            ></div>
           </el-row>
 
-          <el-row :gutter="18"
-                  style="left:10px">
-            <el-row :gutter="18"
-                    v-for="(item,index) in sinput.length"
-                    :key="index">
-              <el-col :span="11"
-                      id="text">
-                <el-row :gutter="18"
-                        id="des"
-                        style="margin-bottom: 0px;">Sample Input {{item}}<el-button size="mini"
-                             v-clipboard:copy="sinput[index]"
-                             v-clipboard:success="onCopy"
-                             v-clipboard:error="onError"
-                             style="margin-left:8px;float:top;">Copy</el-button>
+          <el-row :gutter="18" style="left: 10px">
+            <el-row
+              :gutter="18"
+              v-for="(item, index) in sinput.length"
+              :key="index"
+            >
+              <el-col :span="11" id="text">
+                <el-row :gutter="18" id="des" style="margin-bottom: 0px"
+                  >Sample Input {{ item
+                  }}<el-button
+                    size="mini"
+                    v-clipboard:copy="sinput[index]"
+                    v-clipboard:success="onCopy"
+                    v-clipboard:error="onError"
+                    style="margin-left: 8px; float: top"
+                    >Copy</el-button
+                  >
                 </el-row>
-                <el-row :gutter="18"
-                        id="data"
-                        style="margin-bottom: 0px;">{{sinput[index]}}</el-row>
+                <el-row :gutter="18" id="data" style="margin-bottom: 0px">{{
+                  sinput[index]
+                }}</el-row>
               </el-col>
-              <el-col :span="11"
-                      id="text">
-                <el-row :gutter="18"
-                        id="des"
-                        style="margin-bottom: 0px;">Sample Output {{item}}</el-row>
-                <el-row :gutter="18"
-                        id="data"
-                        style="margin-bottom: 0px;">{{soutput[index]}}</el-row>
+              <el-col :span="11" id="text">
+                <el-row :gutter="18" id="des" style="margin-bottom: 0px"
+                  >Sample Output {{ item }}</el-row
+                >
+                <el-row :gutter="18" id="data" style="margin-bottom: 0px">{{
+                  soutput[index]
+                }}</el-row>
               </el-col>
             </el-row>
           </el-row>
 
-          <el-row :gutter="18"
-                  id="des">Source</el-row>
-          <el-row :gutter="18"
-                  id="detail">
-            <div style="margin-right:50px;">{{source}}</div>
+          <el-row :gutter="18" id="des">Source</el-row>
+          <el-row :gutter="18" id="detail">
+            <div style="margin-right: 50px">{{ source }}</div>
           </el-row>
-          <el-row :gutter="18"
-                  id="des">Hint</el-row>
-          <el-row :gutter="18"
-                  id="detail">
-            <div style="margin-right:50px;word-break:break-all;white-space:pre-line;"
-                 v-html="hint"></div>
+          <el-row :gutter="18" id="des">Hint</el-row>
+          <el-row :gutter="18" id="detail">
+            <div
+              style="
+                margin-right: 50px;
+                word-break: break-all;
+                white-space: pre-line;
+              "
+              v-html="hint"
+            ></div>
           </el-row>
         </el-card>
       </el-row>
@@ -83,38 +108,47 @@
         <el-card shadow="always">
           <el-row :gutter="15">
             <el-col :span="3">
-              <div id="des"
-                   style="padding: 5px 10px;">Language:</div>
+              <div id="des" style="padding: 5px 10px">Language:</div>
             </el-col>
             <el-col :span="2">
-              <el-select v-model="language"
-                         placeholder="请选择"
-                         @change="changetemplate">
+              <el-select
+                v-model="language"
+                placeholder="请选择"
+                @change="changetemplate"
+              >
                 <languageselect></languageselect>
               </el-select>
             </el-col>
             <el-col :span="2">
-              <el-button type="primary"
-                         @click="submit"
-                         style="font-weight:bold;margin-left:10px;">Submit</el-button>
+              <el-button
+                type="primary"
+                @click="submit"
+                style="font-weight: bold; margin-left: 10px"
+                >Submit</el-button
+              >
             </el-col>
             <el-col :span="2">
-              <el-button type="primary"
-                         @click="code = ''"
-                         style="font-weight:bold;margin-left:10px;">Reset</el-button>
+              <el-button
+                type="primary"
+                @click="code = ''"
+                style="font-weight: bold; margin-left: 10px"
+                >Reset</el-button
+              >
             </el-col>
 
             <el-col :span="15">
-              <el-button round
-                         :type="judgetype"
-                         :loading="loadingshow"
-                         style="font-weight:bold;margin-left:10px;"
-                         @click="showdialog">{{submitbuttontext}}</el-button>
+              <el-button
+                round
+                :type="judgetype"
+                :loading="loadingshow"
+                style="font-weight: bold; margin-left: 10px"
+                @click="showdialog"
+                >{{ submitbuttontext }}</el-button
+              >
             </el-col>
           </el-row>
           <el-row>
-            <codemirror v-model="code"
-                        :options="cmOptions"></codemirror>
+            <codemirror v-model="code" :options="cmOptions"></codemirror>
           </el-row>
         </el-card>
       </el-row>
@@ -124,70 +158,62 @@
       <el-row :gutter="15">
         <el-card shadow="always">
           <el-collapse v-model="activeNames">
-            <el-collapse-item name="1"
-                              id="des">
+            <el-collapse-item name="1" id="des">
               <template slot="title">
-                <font color="deepskyblue"
-                      size="4">Creator:</font>
+                <font color="deepskyblue" size="4">Creator:</font>
               </template>
-              <div>{{author}}</div>
+              <div>{{ author }}</div>
             </el-collapse-item>
-            <el-collapse-item name="2"
-                              id="des">
+            <el-collapse-item name="2" id="des">
               <template slot="title">
-                <font color="deepskyblue"
-                      size="4">Date:</font>
+                <font color="deepskyblue" size="4">Date:</font>
               </template>
-              <div>{{addtime}}</div>
+              <div>{{ addtime }}</div>
             </el-collapse-item>
-            <el-collapse-item name="3"
-                              id="des">
+            <el-collapse-item name="3" id="des">
               <template slot="title">
-                <font color="deepskyblue"
-                      size="4">OJ:</font>
+                <font color="deepskyblue" size="4">OJ:</font>
               </template>
-              <div>{{oj}}</div>
+              <div>{{ oj }}</div>
             </el-collapse-item>
-            <el-collapse-item name="4"
-                              id="des">
+            <el-collapse-item name="4" id="des">
               <template slot="title">
-                <font color="deepskyblue"
-                      size="4">Time:</font>
+                <font color="deepskyblue" size="4">Time:</font>
               </template>
-              <div>{{time}}</div>
+              <div>{{ time }}</div>
             </el-collapse-item>
-            <el-collapse-item name="5"
-                              id="des">
+            <el-collapse-item name="5" id="des">
               <template slot="title">
-                <font color="deepskyblue"
-                      size="4">Memory:</font>
+                <font color="deepskyblue" size="4">Memory:</font>
               </template>
-              <div>{{memory}}</div>
+              <div>{{ memory }}</div>
             </el-collapse-item>
-            <el-collapse-item name="7"
-                              id="des">
+            <el-collapse-item name="7" id="des">
               <template slot="title">
-                <font color="deepskyblue"
-                      size="4">Level:</font>
+                <font color="deepskyblue" size="4">Level:</font>
               </template>
-              <el-tag size="medium"
-                      :type="problemlevel(level)"
-                      disable-transitions
-                      hit>{{ level }}</el-tag>
+              <el-tag
+                size="medium"
+                :type="problemlevel(level)"
+                disable-transitions
+                hit
+                >{{ level }}</el-tag
+              >
             </el-collapse-item>
-            <el-collapse-item name="6"
-                              id="des">
+            <el-collapse-item name="6" id="des">
               <template slot="title">
-                <font color="deepskyblue"
-                      size="4">Tags:</font>
+                <font color="deepskyblue" size="4">Tags:</font>
               </template>
-              <el-tag id="tag"
-                      v-for="(name,index) in tagnames"
-                      :key="index"
-                      size="medium"
-                      type="info"
-                      disable-transitions
-                      hit>{{ name }}</el-tag>
+              <el-tag
+                id="tag"
+                v-for="(name, index) in tagnames"
+                :key="index"
+                size="medium"
+                type="info"
+                disable-transitions
+                hit
+                >{{ name }}</el-tag
+              >
             </el-collapse-item>
           </el-collapse>
         </el-card>
@@ -226,9 +252,9 @@ export default {
     codemirror,
     statusmini,
     prostatistice,
-    languageselect
+    languageselect,
   },
-  data () {
+  data() {
     return {
       imgcode: "",
       ip: "",
@@ -237,7 +263,7 @@ export default {
         tabSize: 4,
         mode: "text/x-c++src",
         theme: "base16-light",
-        lineNumbers: true
+        lineNumbers: true,
       },
       title: "",
       des: "",
@@ -272,20 +298,19 @@ export default {
       submitbuttontext: "提交后请勿重复刷新/支持将文件拖入代码框",
       judgetype: "primary",
       loadingshow: false,
-      submitid: -1
+      submitid: -1,
     };
   },
   watch: {
     des: function () {
-      console.log('data changed');
+      console.log("data changed");
       this.$nextTick().then(() => {
         this.reRender();
       });
-    }
+    },
   },
-  created () {
-
-    var myip = require('ip');
+  created() {
+    var myip = require("ip");
     this.userip = myip.address();
     this.ID = this.$route.query.problemID;
     if (!this.ID) {
@@ -294,31 +319,32 @@ export default {
     }
     var auth = 1;
 
-
     this.$axios
       .get("/showpic/", {
         params: {
-          ProblemId: this.$route.query.problemID
-        }
+          ProblemId: this.$route.query.problemID,
+        },
       })
-      .then(res => {
+      .then((res) => {
         this.imgcode = res.data;
-      }).catch(error=>{
-            this.imgcode = ''
-          });
-
-
+      })
+      .catch((error) => {
+        this.imgcode = "";
+      });
 
     this.$axios
       .get("/problem/" + this.ID + "/")
-      .then(response => {
+      .then((response) => {
         auth = response.data.auth;
-        if ((auth == 2 || auth == 3) && (sessionStorage.type == 1 || sessionStorage.type == "")) {
+        if (
+          (auth == 2 || auth == 3) &&
+          (sessionStorage.type == 1 || sessionStorage.type == "")
+        ) {
           this.title = "非法访问！请在比赛中访问题目！";
           this.$message.error("服务器错误！" + "(" + "无权限" + ")");
           return;
         }
-        this.proid = this.ID
+        this.proid = this.ID;
         this.des = response.data.des;
         this.input = response.data.input;
         this.output = response.data.output;
@@ -335,20 +361,19 @@ export default {
         this.memory = response.data.memory + "MB";
         this.hint = response.data.hint;
 
-        var li = response.data.template.split("*****")
+        var li = response.data.template.split("*****");
         for (var i = 1; i < li.length; i += 2) {
-          this.codetemplate[li[i]] = li[i + 1]
+          this.codetemplate[li[i]] = li[i + 1];
         }
-        this.code = this.codetemplate[this.language]
+        this.code = this.codetemplate[this.language];
 
-        if (this.oj != "LPOJ") {
-          this.proid = this.source
+        if (this.oj != "CDUOJ") {
+          this.proid = this.source;
         }
-
 
         this.$axios
           .get("/problemdata/" + this.ID + "/")
-          .then(response => {
+          .then((response) => {
             if (response.data["level"] == "1") response.data["level"] = "Easy";
             if (response.data["level"] == "2")
               response.data["level"] = "Medium";
@@ -406,57 +431,69 @@ export default {
             this.title = response.data.title;
             this.level = response.data.level;
             this.tagnames = response.data.tag;
-            this.$refs.prosta.setdata(this.$data)
-            console.log(this.$refs["Statusmini"])
-            this.$refs["Statusmini"].setstatus(this.ID, sessionStorage.username, "");
-
+            this.$refs.prosta.setdata(this.$data);
+            console.log(this.$refs["Statusmini"]);
+            this.$refs["Statusmini"].setstatus(
+              this.ID,
+              sessionStorage.username,
+              ""
+            );
           })
-          .catch(error => {
-            this.$message.error("服务器错误！" + "(" + JSON.stringify(error.response.data) + ")");
+          .catch((error) => {
+            this.$message.error(
+              "服务器错误！" + "(" + JSON.stringify(error.response.data) + ")"
+            );
           });
       })
-      .catch(error => {
+      .catch((error) => {
         this.title = "非法访问！请在比赛中访问题目！";
-        this.$message.error("服务器错误！" + "(" + JSON.stringify(error.response.data) + ")");
+        this.$message.error(
+          "服务器错误！" + "(" + JSON.stringify(error.response.data) + ")"
+        );
       });
   },
   methods: {
-    showdialog () {
+    showdialog() {
       if (this.submitid != -1)
-        this.$refs["Statusmini"].showdialog(this.submitid)
+        this.$refs["Statusmini"].showdialog(this.submitid);
     },
-    changetemplate (lang) {
-      var t = this.codetemplate[lang]
+    changetemplate(lang) {
+      var t = this.codetemplate[lang];
       if (t) {
         this.$confirm("确定切换语言吗？", "切换后当前代码不会保存！", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
-          type: "warning"
+          type: "warning",
         }).then(() => {
-
-          this.code = this.codetemplate[lang]
-        })
+          this.code = this.codetemplate[lang];
+        });
       }
-
-
     },
-    reRender () {
+    reRender() {
       if (window.MathJax) {
-        console.log('rendering mathjax');
+        console.log("rendering mathjax");
         MathJax.Hub.Config({
           tex2jax: {
-            inlineMath: [['$', '$'], ["\\(", "\\)"]],
-            displayMath: [['$$', '$$'], ["\\[", "\\]"]]
-          }
+            inlineMath: [
+              ["$", "$"],
+              ["\\(", "\\)"],
+            ],
+            displayMath: [
+              ["$$", "$$"],
+              ["\\[", "\\]"],
+            ],
+          },
         });
-        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub], () => console.log('done'));
+        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub], () =>
+          console.log("done")
+        );
       }
     },
-    onCopy (e) {
+    onCopy(e) {
       this.$message.success("复制成功！");
     },
     // 复制失败
-    onError (e) {
+    onError(e) {
       this.$message.error("复制失败：" + e);
     },
     problemlevel: function (type) {
@@ -492,14 +529,14 @@ export default {
       this.$confirm("确定提交吗？", "提交", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
+        type: "warning",
       }).then(() => {
         this.$message({
           type: "success",
-          message: "提交中..."
+          message: "提交中...",
         });
-        this.$axios.get("/currenttime/").then(response2 => {
-         // console.log(this.userip);
+        this.$axios.get("/currenttime/").then((response2) => {
+          // console.log(this.userip);
           var curtime = response2.data;
           //this.$axios.get("/")
           this.$axios
@@ -517,15 +554,20 @@ export default {
               contest: 0,
               code: this.code,
               testcase: 0,
-              message: this.oj == "LPOJ" ? "0" : (this.proid + ""),
-              problemtitle: (this.oj == "LPOJ" ? "LPOJ" : "") + (this.oj == "LPOJ" ? ' - ' : "") + (this.oj == "LPOJ" ? this.proid : "") + ' ' + this.title,
+              message: this.oj == "CDUOJ" ? "0" : this.proid + "",
+              problemtitle:
+                (this.oj == "CDUOJ" ? "CDUOJ" : "") +
+                (this.oj == "CDUOJ" ? " - " : "") +
+                (this.oj == "CDUOJ" ? this.proid : "") +
+                " " +
+                this.title,
               rating: parseInt(sessionStorage.rating),
-              ip: this.userip
+              ip: this.userip,
             })
-            .then(response => {
+            .then((response) => {
               this.$message({
                 message: "提交成功！",
-                type: "success"
+                type: "success",
               });
               clearInterval(this.$store.state.submittimer);
               this.submitid = response.data.id;
@@ -535,109 +577,112 @@ export default {
               //创建一个全局定时器，定时刷新状态
               this.$store.state.submittimer = setInterval(this.timer, 3000);
             })
-            .catch(error => {
-              this.$message.error("服务器错误！" + "(请检查编码（代码需要utf-8编码）或联系管理员)");
+            .catch((error) => {
+              this.$message.error(
+                "服务器错误！" + "(请检查编码（代码需要utf-8编码）或联系管理员)"
+              );
             });
         });
       });
     },
     timer: function () {
-      if (this.submitbuttontext == "提交后请勿重复刷新/支持将文件拖入代码框") return;
-      this.$axios.get("/judgestatus/" + this.submitid + "/").then(response => {
-        this.loadingshow = false;
-        var testcase = response.data["testcase"];
-        if (response.data["result"] == "-1") {
-          response.data["result"] = "Pending";
-          this.loadingshow = true;
-          this.judgetype = "info";
-        }
+      if (this.submitbuttontext == "提交后请勿重复刷新/支持将文件拖入代码框")
+        return;
+      this.$axios
+        .get("/judgestatus/" + this.submitid + "/")
+        .then((response) => {
+          this.loadingshow = false;
+          var testcase = response.data["testcase"];
+          if (response.data["result"] == "-1") {
+            response.data["result"] = "Pending";
+            this.loadingshow = true;
+            this.judgetype = "info";
+          }
 
-        if (response.data["result"] == "-2") {
-          response.data["result"] = "Judging";
-          this.loadingshow = true;
-          this.judgetype = "";
-        }
+          if (response.data["result"] == "-2") {
+            response.data["result"] = "Judging";
+            this.loadingshow = true;
+            this.judgetype = "";
+          }
 
-        if (response.data["result"] == "-3") {
-          response.data["result"] = "Wrong Answer on test " + testcase;
-          this.judgetype = "danger";
-          clearInterval(this.$store.state.submittimer);
-          if (testcase == "?")
-            response.data["result"] = "Wrong Answer"
-        }
+          if (response.data["result"] == "-3") {
+            response.data["result"] = "Wrong Answer on test " + testcase;
+            this.judgetype = "danger";
+            clearInterval(this.$store.state.submittimer);
+            if (testcase == "?") response.data["result"] = "Wrong Answer";
+          }
 
-        if (response.data["result"] == "-4") {
-          response.data["result"] = "Compile Error";
-          this.judgetype = "warning";
-          clearInterval(this.$store.state.submittimer);
-        }
+          if (response.data["result"] == "-4") {
+            response.data["result"] = "Compile Error";
+            this.judgetype = "warning";
+            clearInterval(this.$store.state.submittimer);
+          }
 
-        if (response.data["result"] == "-5") {
-          response.data["result"] = "Presentation Error on test " + testcase;
-          this.judgetype = "warning";
-          clearInterval(this.$store.state.submittimer);
-          if (testcase == "?")
-            response.data["result"] = "Presentation Error"
-        }
+          if (response.data["result"] == "-5") {
+            response.data["result"] = "Presentation Error on test " + testcase;
+            this.judgetype = "warning";
+            clearInterval(this.$store.state.submittimer);
+            if (testcase == "?") response.data["result"] = "Presentation Error";
+          }
 
-        if (response.data["result"] == "-6") {
-          response.data["result"] = "Waiting";
-          this.loadingshow = true;
-          this.judgetype = "info";
-        }
+          if (response.data["result"] == "-6") {
+            response.data["result"] = "Waiting";
+            this.loadingshow = true;
+            this.judgetype = "info";
+          }
 
-        if (response.data["result"] == "0") {
-          response.data["result"] = "Accepted";
-          this.judgetype = "success";
-          clearInterval(this.$store.state.submittimer);
-        }
+          if (response.data["result"] == "0") {
+            response.data["result"] = "Accepted";
+            this.judgetype = "success";
+            clearInterval(this.$store.state.submittimer);
+          }
 
-        if (response.data["result"] == "1") {
-          response.data["result"] = "Time Limit Exceeded on test " + testcase;
-          this.judgetype = "warning";
-          clearInterval(this.$store.state.submittimer);
-          if (testcase == "?")
-            response.data["result"] = "Time Limit Exceeded"
-        }
+          if (response.data["result"] == "1") {
+            response.data["result"] = "Time Limit Exceeded on test " + testcase;
+            this.judgetype = "warning";
+            clearInterval(this.$store.state.submittimer);
+            if (testcase == "?")
+              response.data["result"] = "Time Limit Exceeded";
+          }
 
-        if (response.data["result"] == "2") {
-          response.data["result"] = "Time Limit Exceeded on test " + testcase;
-          this.judgetype = "warning";
-          clearInterval(this.$store.state.submittimer);
-          if (testcase == "?")
-            response.data["result"] = "Time Limit Exceeded"
-        }
+          if (response.data["result"] == "2") {
+            response.data["result"] = "Time Limit Exceeded on test " + testcase;
+            this.judgetype = "warning";
+            clearInterval(this.$store.state.submittimer);
+            if (testcase == "?")
+              response.data["result"] = "Time Limit Exceeded";
+          }
 
-        if (response.data["result"] == "3") {
-          response.data["result"] = "Memory Limit Exceeded on test " + testcase;
-          this.judgetype = "warning";
-          clearInterval(this.$store.state.submittimer);
-          if (testcase == "?")
-            response.data["result"] = "Memory Limit Exceeded"
-        }
+          if (response.data["result"] == "3") {
+            response.data["result"] =
+              "Memory Limit Exceeded on test " + testcase;
+            this.judgetype = "warning";
+            clearInterval(this.$store.state.submittimer);
+            if (testcase == "?")
+              response.data["result"] = "Memory Limit Exceeded";
+          }
 
-        if (response.data["result"] == "4") {
-          response.data["result"] = "Runtime Error on test " + testcase;
-          this.judgetype = "warning";
-          clearInterval(this.$store.state.submittimer);
-          if (testcase == "?")
-            response.data["result"] = "Runtime Error"
-        }
+          if (response.data["result"] == "4") {
+            response.data["result"] = "Runtime Error on test " + testcase;
+            this.judgetype = "warning";
+            clearInterval(this.$store.state.submittimer);
+            if (testcase == "?") response.data["result"] = "Runtime Error";
+          }
 
-        if (response.data["result"] == "5") {
-          response.data["result"] = "System Error";
-          this.judgetype = "danger";
-          clearInterval(this.$store.state.submittimer);
-        }
+          if (response.data["result"] == "5") {
+            response.data["result"] = "System Error";
+            this.judgetype = "danger";
+            clearInterval(this.$store.state.submittimer);
+          }
 
-        this.submitbuttontext = response.data["result"];
-        this.$refs["Statusmini"].reflash()
-      });
-    }
+          this.submitbuttontext = response.data["result"];
+          this.$refs["Statusmini"].reflash();
+        });
+    },
   },
-  destroyed () {
+  destroyed() {
     clearInterval(this.$store.state.submittimer);
-  }
+  },
 };
 </script>
 

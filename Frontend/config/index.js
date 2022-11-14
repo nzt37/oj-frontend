@@ -15,7 +15,7 @@ module.exports = {
         target: 'https://www.lpoj.cn/api',
         changeOrigin: true,
         pathRewrite: {
-           '^/api': '/'
+          '^/api': '/'
         }
       }
     },
@@ -41,7 +41,14 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true
+    cssSourceMap: true,
+    configureWebpack: {
+      //关闭 webpack 的性能提示
+      performance: {
+        hints: false
+      },
+    },
+    mode: "development",
   },
 
   build: {
@@ -73,5 +80,6 @@ module.exports = {
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
-  }
+  },
+
 }

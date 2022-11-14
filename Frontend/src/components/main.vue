@@ -1,6 +1,6 @@
 <template>
-  <el-row :gutter="12">
-    <el-col :span="6">
+  <!-- <el-row :gutter="0"> -->
+    <!-- <el-col :span="6">
       <el-row :gutter="10">
         <welcomemessage></welcomemessage>
       </el-row>
@@ -16,11 +16,11 @@
       <el-row :gutter="10">
         <cfrate></cfrate>
       </el-row>
-    </el-col>
-    <el-col :span="18">
+    </el-col> -->
+    <!-- <el-col :span="100">
       <soulrow></soulrow>
     
-      <el-row>
+      <el-row> -->
         <el-tabs type="border-card">
           <el-tab-pane :label="label.des" >
             <description></description>
@@ -32,13 +32,13 @@
             <ratingrule></ratingrule>
           </el-tab-pane>
         </el-tabs>
-      </el-row>
+      <!-- </el-row> -->
      
-      <el-row>
+      <!-- <el-row>
         <contestmini></contestmini>
-      </el-row>
-    </el-col>
-  </el-row>
+      </el-row> -->
+    <!-- </el-col>
+  </el-row> -->
 </template>
 
 <script>
@@ -54,16 +54,16 @@ import acrank from "@/components/utils/acrank";
 import cfrate from "@/components/utils/cfrate";
 export default {
   components: {
-    rankchart,
-    ojmessage,
-    welcomemessage,
-    topuser,
-    soulrow,
-    ratingrule,
-    contestmini,
-    acrank,
+    // rankchart,
+    // ojmessage,
+    // welcomemessage,
+    // topuser,
+    // soulrow,
+    // ratingrule,
+    // contestmini,
+    // acrank,
     description,
-    cfrate
+    // cfrate
   },
   name: "homepage",
   data() {

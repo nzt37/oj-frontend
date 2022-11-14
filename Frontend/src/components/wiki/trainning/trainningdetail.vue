@@ -1,19 +1,34 @@
 <template>
   <el-card>
-    <el-dialog title :visible.sync="dialogVisible" width="60%" :show-close="false">
-      <h2>{{dialogdata.title}}</h2>
+    <el-dialog
+      title
+      :visible.sync="dialogVisible"
+      width="60%"
+      :show-close="false"
+    >
+      <h2>{{ dialogdata.title }}</h2>
 
       <el-row :gutter="30">
         <el-col :span="12">
-          <p>{{'章节' + dialogdata.group+'-'+dialogdata.num+', 共 '+dialogdata.totnum+' 道题' }}</p>
+          <p>
+            {{
+              "章节" +
+              dialogdata.group +
+              "-" +
+              dialogdata.num +
+              ", 共 " +
+              dialogdata.totnum +
+              " 道题"
+            }}
+          </p>
           <b>任务说明：</b>
-          {{dialogdata.des}}
-          <br>
+          {{ dialogdata.des }}
+          <br />
           <p>你可以先阅读下面教程：</p>
           <p v-for="pro in dialogdata.tiplist" :key="pro">
-            <a :href="'/wikidetail/'+pro+'/'" target="_blank" :class="'wa'">
+            <a :href="'/wikidetail/' + pro + '/'" target="_blank" :class="'wa'">
               <i :class="'el-icon-success'"></i>
-              {{' 教程 - '+pro}}
+              {{ " 教程 - " + pro }}
             </a>
           </p>
         </el-col>
@@ -22,12 +37,18 @@
           <h3>
             <p v-for="pro in dialogdata.prolist" :key="pro">
               <a
-                :href="'/problemdetail?problemID='+pro"
+                :href="'/problemdetail?problemID=' + pro"
                 target="_blank"
-                :class="dialogdata[pro]==true?'ac':'wa'"
+                :class="dialogdata[pro] == true ? 'ac' : 'wa'"
               >
-                <i :class="dialogdata[pro]==true?'el-icon-success':'el-icon-question'"></i>
-                {{' LPOJ - '+pro}}
+                <i
+                  :class="
+                    dialogdata[pro] == true
+                      ? 'el-icon-success'
+                      : 'el-icon-question'
+                  "
+                ></i>
+                {{ " CDUOJ - " + pro }}
               </a>
             </p>
           </h3>
@@ -36,41 +57,70 @@
     </el-dialog>
 
     <div slot="header">
-      <h2>{{title}}</h2>
-      <div>{{des}}</div>
+      <h2>{{ title }}</h2>
+      <div>{{ des }}</div>
     </div>
     <el-row :gutter="15">
       <el-col :span="22">
-        <el-progress :text-inside="true" :stroke-width="18" :percentage="per" status="success"></el-progress>
+        <el-progress
+          :text-inside="true"
+          :stroke-width="18"
+          :percentage="per"
+          status="success"
+        ></el-progress>
       </el-col>
       <el-col :span="2">
-        <b style="text-align:center;">{{donepro + ' / '+totalpro +' 达成'}}</b>
+        <b style="text-align: center">{{
+          donepro + " / " + totalpro + " 达成"
+        }}</b>
       </el-col>
     </el-row>
-    <el-row :gutter="15" v-for="(item,i) in rownum" :key="i">
-      <el-col :span="6" :key="i*4+j" v-for="(item,j) in (i+1)*4>totalpro?(totalpro%4):4">
+    <el-row :gutter="15" v-for="(item, i) in rownum" :key="i">
+      <el-col
+        :span="6"
+        :key="i * 4 + j"
+        v-for="(item, j) in (i + 1) * 4 > totalpro ? totalpro % 4 : 4"
+      >
         <el-card class="box-card" :body-style="{ padding: '0px' }">
-          <el-row style="background:#e6ffdf;height:40px;">
-            <b style="color:green;margin:15px;font-size:20px;">{{trainningdata[i*4+j].title}}</b>
+          <el-row style="background: #e6ffdf; height: 40px">
+            <b style="color: green; margin: 15px; font-size: 20px">{{
+              trainningdata[i * 4 + j].title
+            }}</b>
           </el-row>
-          <b
-            style="margin-left:10px;"
-          >{{'章节' + trainningdata[i*4+j].group+'-'+trainningdata[i*4+j].num+', 共 '+trainningdata[i*4+j].totnum+' 道题' }}</b>
-          <p style="margin-left:10px;margin-top:10px;color:#909399">{{trainningdata[i*4+j].des}}</p>
-          <el-row style="float:bottom;margin:5px">
+          <b style="margin-left: 10px">{{
+            "章节" +
+            trainningdata[i * 4 + j].group +
+            "-" +
+            trainningdata[i * 4 + j].num +
+            ", 共 " +
+            trainningdata[i * 4 + j].totnum +
+            " 道题"
+          }}</b>
+          <p style="margin-left: 10px; margin-top: 10px; color: #909399">
+            {{ trainningdata[i * 4 + j].des }}
+          </p>
+          <el-row style="float: bottom; margin: 5px">
             <el-progress
               :text-inside="true"
               :stroke-width="18"
-              :percentage="trainper[i*4+j]"
-              :status="trainper[i*4+j]==100?'success':''"
-              style="margin:5px;margin-top:10px;"
+              :percentage="trainper[i * 4 + j]"
+              :status="trainper[i * 4 + j] == 100 ? 'success' : ''"
+              style="margin: 5px; margin-top: 10px"
             ></el-progress>
             <el-button
               size="small"
-              :type="trainper[i*4+j]==100?'success':'primary'"
-              style="float:right;margin-right:5px;margin-top:10px;margin-bottom:10px;"
-              @click="goclick(i*4+j)"
-            >{{trainper[i*4+j]==100?'你已完成':'进入章节'}}</el-button>
+              :type="trainper[i * 4 + j] == 100 ? 'success' : 'primary'"
+              style="
+                float: right;
+                margin-right: 5px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+              "
+              @click="goclick(i * 4 + j)"
+              >{{
+                trainper[i * 4 + j] == 100 ? "你已完成" : "进入章节"
+              }}</el-button
+            >
           </el-row>
         </el-card>
       </el-col>
@@ -95,7 +145,7 @@ export default {
       trainningdata: [],
       trainper: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 9, 8, 7, 6],
       dialogdata: {},
-      dialogVisible: false
+      dialogVisible: false,
     };
   },
   mounted() {
@@ -134,10 +184,10 @@ export default {
 
     this.$axios
       .get("/trainning/?group=" + this.$route.params.trainningid)
-      .then(response => {
+      .then((response) => {
         this.totalpro = response.data.length;
         var acpro = this.$store.state.acpro;
-        if(acpro==undefined) acpro=""
+        if (acpro == undefined) acpro = "";
         for (let i = 0; i < this.totalpro; i++) {
           var proli = response.data[i].problem.split("|");
           if (proli[0] == "") proli = [];
@@ -161,7 +211,10 @@ export default {
                 1.0 *
                 100
             );
-          if (response.data[i]["totnum"] == response.data[i]["acnum"]&&response.data[i]["totnum"]!=0)
+          if (
+            response.data[i]["totnum"] == response.data[i]["acnum"] &&
+            response.data[i]["totnum"] != 0
+          )
             this.donepro++;
         }
 
@@ -171,7 +224,7 @@ export default {
 
         this.per = parseInt(((this.donepro * 1.0) / this.totalpro) * 100);
       })
-      .catch(error => {
+      .catch((error) => {
         this.$message.error(
           "服务器错误！" + JSON.stringify(error.response.data)
         );
@@ -182,8 +235,8 @@ export default {
     goclick(id) {
       this.dialogdata = this.trainningdata[id];
       this.dialogVisible = true;
-    }
-  }
+    },
+  },
 };
 </script>
 
